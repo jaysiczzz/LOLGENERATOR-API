@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let champions = [];
 
-    // Fetch Champion Data Once
     fetch(dataDragonURL)
         .then(response => {
             if (!response.ok) {
@@ -15,13 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json();
         })
         .then(data => {
-            champions = Object.values(data.data); // Convert champion objects to an array
+            champions = Object.values(data.data);
         })
         .catch(error => {
             console.error('Error fetching champion data:', error);
         });
 
-    // Button Click: Generate Random Champion
     button.addEventListener('click', () => {
         if (champions.length === 0) {
             championInfoDiv.innerHTML = '<p>Loading champions...</p>';
